@@ -1,0 +1,17 @@
+#!/command/with-contenv sh
+set -e
+
+CRON_USER="$1"
+CRON_EXEC="$2"
+CRON_DIR="/var/spool/cron/crontabs"
+CRON_FILE="${CRON_DIR}/${CRON_USER}"
+
+mkdir -pv "$CRON_DIR"
+touch "$CRON_FILE"
+
+if ! grep -F -x -q "$CRON_EXEC" "$CRON_FILE"; then
+	echo "$CRON_EXEC" >>"$CRON_FILE"
+fi
+
+chmod 600 "$CRON_FILE"
+chown "$CRON_USER:root" "$CRON_FILE" 2>/dev/null || true

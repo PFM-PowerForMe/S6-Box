@@ -1,0 +1,17 @@
+export PATH="/command:/pfm/bin:/usr/sbin:/usr/bin:/bin"
+export LC_ALL="C.UTF-8"
+export LANG="C.UTF-8"
+export TERM="xterm-256color"
+export COLORTERM="truecolor"
+export EDITOR="vi"
+export VISUAL="vi"
+export TMPDIR="/tmp"
+export TEMP="/tmp"
+export TMP="/tmp"
+export HISTCONTROL="ignoredups"
+export HISTSIZE="1000"
+export HISTFILESIZE="1000"
+
+alias la='ls -A'
+alias ll='ls -alF'
+alias l='ls -CF'
