@@ -1,4 +1,4 @@
 #!/command/execlineb -P
 with-contenv
 s6-notifyoncheck -d
-/bin/crond -f -S -l 0 -c /var/spool/cron/crontabs
+/bin/crond -f -l 8 -L /dev/stdout -c /var/spool/cron/crontabs
