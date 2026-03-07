@@ -34,9 +34,9 @@ ENV PATH="/command:/pfm/bin:/usr/sbin:/usr/bin:/bin" \
 
 RUN ln -sfn /run /var/run
 RUN addgroup -g 32760 syslog && \
-     adduser -u 32760 -G syslog -H -D -s /bin/false syslog && \
+     adduser -u 32760 -G syslog -H -h /var/log/syslogd -D -s /sbin/nologin syslog && \
      addgroup -g 32761 sysllog && \
-     adduser -u 32761 -G sysllog -H -D -s /bin/false sysllog
+     adduser -u 32761 -G sysllog -H -h /var/log/syslogd -D -s /sbin/nologin sysllog
 # 文件补全
 COPY --from=alpine-builder /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 COPY --from=alpine-builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
