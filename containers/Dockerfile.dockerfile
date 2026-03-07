@@ -33,6 +33,10 @@ ENV PATH="/command:/pfm/bin:/usr/sbin:/usr/bin:/bin" \
      HISTFILESIZE="1000"
 
 RUN ln -sfn /run /var/run
+RUN addgroup -g 32760 syslog && \
+     adduser -u 32760 -G syslog -H -D -s /bin/false syslog && \
+     addgroup -g 32761 sysllog && \
+     adduser -u 32761 -G sysllog -H -D -s /bin/false sysllog
 # 文件补全
 COPY --from=alpine-builder /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 COPY --from=alpine-builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
